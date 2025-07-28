@@ -7,23 +7,74 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-      .card {
+      /* .card {
         width: 300px;
         height: 300px;
         border: 1px solid #ccc;
         margin: 10px;
         padding: 10px;
         box-sizing: border-box;
-      }
+      } */
       .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
       }
+      .card {
+        width: 250px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        margin: 10px;
+      }
+
+      .card-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 10px 15px;
+        text-align: left;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+        /* text-align: center; */
+      }
+
+      .card-address {
+        margin: 5px 0;
+        font-size: 0.95em;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .card-link,
+      .card-phone {
+        margin: 6px 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9em;
+      }
+
+      .card-link img,
+      .card-phone img {
+        width: 18px;
+        height: 18px;
+      }
+
     </style>
   </head>
 
   <body>
+    <div class="wrapper"></div>
     <header>
       <div class="logo">
         <img src="logoKelurahan.png" alt="Logo Kelurahan">
@@ -80,12 +131,29 @@
         data.forEach(item => {
           const card = document.createElement('div');
           card.className = 'card';
+          // card.innerHTML = `
+          //   <img src="${convertGoogleDriveLink(item['Foto UMKM'])}" alt="${item['Nama UMKM']}" />
+          //   <h3>${item['Nama UMKM']}</h3>
+          //   <h5>${item['Alamat UMKM']}</h5>
+          //   <a href="${item['Titik Lokasi Maps UMKM']}" target="_blank">Lihat di Google Maps</a>
+          //   <h4>${item['No. WA UMKM/Pemilik UMKM']}</h4>                 
+          // `;
           card.innerHTML = `
-            <img src="${convertGoogleDriveLink(item['Foto UMKM'])}" alt="${item['Nama UMKM']}" />
-            <h3>${item['Nama UMKM']}</h3>
-            <h5>${item['Alamat UMKM']}</h5>
-            <a href="${item['Titik Lokasi Maps UMKM']}" target="_blank">Lihat di Google Maps</a>
-            <h4>${item['No. WA UMKM/Pemilik UMKM']}</h4>                 
+            <img class="card-img" src="${convertGoogleDriveLink(item['Foto UMKM'])}" alt="${item['Nama UMKM']}">
+            <div class="card-content">
+              <h3 class="card-title">${item['Nama UMKM']}</h3>
+              <p class="card-address">${item['Alamat UMKM']}</p>
+              <p class="card-link">
+                <i class="fa-solid fa-location-dot icon" style="margin-right: 2px;"></i>
+                <a href="${item['Titik Lokasi Maps UMKM']}" target="_blank">Lihat di Google Maps</a>
+              </p>
+              <p class="card-phone">
+                <i class="fa-brands fa-whatsapp icon" ></i>
+                <a href="https://wa.me/${item['No. WA UMKM/Pemilik UMKM'].replace(/^0/, '62')}" target="_blank">
+                  ${item['No. WA UMKM/Pemilik UMKM']}
+                </a>
+              </p>
+            </div>
           `;
           container.appendChild(card);
         });
