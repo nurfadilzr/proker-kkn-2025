@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+      .card {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img src="logoKelurahan.png" alt="Logo Kelurahan">
+        <div class="text">
+          <h1>Sistem Informasi Data UMKM</h1>
+          <p>Kelurahan Galung Maloang</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h2>Kenali, Dukung, dan Kunjungi Usaha Warga Sekitar!</h2>
+      <div class="container" id="umkmContainer"></div>
+    </main>
+
+    <footer>
+      <p>© 2025 Kelurahan Galung Maloang</p>
+    </footer>  
+
+
+  <script>
+    const sheetID = "1Ch-wCcxo93LQH32ZMISJT556NdpeCNmVghqvRLDbe-0"; // Ganti dengan ID spreadsheet kamu
+    const sheetName = "Sheet1"; // Ganti dengan nama sheet kamu
+    const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+    
+    function convertGoogleDriveLink(link) {
+      console.log("Link asli:", link); // debug
+      let id = '';
+      
+      // Coba cari ID dari format /d/ID/
+      let match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (match) {
+        id = match[1];
+      } else {
+        // Coba cari ID dari ?id=ID
+        match = link.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        if (match) {
+          id = match[1];
+        }
+      }
+
+      if (id) {
+        return `https://drive.google.com/uc?export=view&id=${id}`;
+      } else {
+        return 'https://via.placeholder.com/150';
+      }
+    }
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('umkmContainer');
+        console.log(data); // Tambahkan ini untuk debugging
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${convertGoogleDriveLink(item['Foto UMKM'])}" alt="${item['Nama UMKM']}" />
+            <h3>${item['Nama UMKM']}</h3>
+            <h5>${item['Alamat UMKM']}</h5>
+            <a href="${item['Titik Lokasi Maps UMKM']}" target="_blank">Lihat di Google Maps</a>
+            <h4>${item['No. WA UMKM/Pemilik UMKM']}</h4>                 
+          `;
+          container.appendChild(card);
+        });
+      });
+
+   
+  </script>
+  </body>
+</html>
+
+
+<!-- logbook 19/07 = kerja fe  13.00 - 14.30 
+ 20/07 = kerja fe 20.00 - 00.00
+ 26/07 = kumpul data 09.00 - 10.30
+ 26/07 = kerja be 11.30 - 14.00
+ 27/07 = kerja be 21.00 - 00.00
+ 28/07 = kerje be 21.00 - 00.00
+ 
+ 
+ -->
