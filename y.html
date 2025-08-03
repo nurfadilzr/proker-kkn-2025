@@ -423,6 +423,69 @@
     //     return 'https://via.placeholder.com/150'; // fallback kalo link gak valid
     //   }
     // }
+
+    // const sheetID = "1Ch-wCcxo93LQH32ZMISJT556NdpeCNmVghqvRLDbe-0"; // Ganti dengan ID spreadsheet kamu
+    // const sheetName = "Sheet1"; // Ganti dengan nama sheet kamu
+    // const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+    
+    // function convertGoogleDriveLink(link) {
+    //   console.log("Link asli:", link); // debug
+    //   let id = '';
+      
+    //   // Coba cari ID dari format /d/ID/
+    //   let match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    //   if (match) {
+    //     id = match[1];
+    //   } else {
+    //     // Coba cari ID dari ?id=ID
+    //     match = link.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    //     if (match) {
+    //       id = match[1];
+    //     }
+    //   }
+
+    //   if (id) {
+    //     return `https://drive.google.com/uc?export=view&id=${id}`;
+    //   } else {
+    //     return 'https://via.placeholder.com/150';
+    //   }
+    // }
+
+    // fetch(url)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     const container = document.getElementById('umkmContainer');
+    //     console.log(data); // Tambahkan ini untuk debugging
+    //     data.forEach(item => {
+    //       const card = document.createElement('div');
+    //       card.className = 'card';
+    //       // card.innerHTML = `
+    //       //   <img src="${convertGoogleDriveLink(item['Foto UMKM'])}" alt="${item['Nama UMKM']}" />
+    //       //   <h3>${item['Nama UMKM']}</h3>
+    //       //   <h5>${item['Alamat UMKM']}</h5>
+    //       //   <a href="${item['Titik Lokasi Maps UMKM']}" target="_blank">Lihat di Google Maps</a>
+    //       //   <h4>${item['No. WA UMKM/Pemilik UMKM']}</h4>                 
+    //       // `;
+    //       card.innerHTML = `
+    //         <img class="card-img" src="${convertGoogleDriveLink(item['Foto UMKM'])}" alt="${item['Nama UMKM']}">
+    //         <div class="card-content">
+    //           <h3 class="card-title">${item['Nama UMKM']}</h3>
+    //           <p class="card-address">${item['Alamat UMKM']}</p>
+    //           <p class="card-link">
+    //             <i class="fa-solid fa-location-dot icon" style="margin-right: 2px;"></i>
+    //             <a href="${item['Titik Lokasi Maps UMKM']}" target="_blank">Lihat di Google Maps</a>
+    //           </p>
+    //           <p class="card-phone">
+    //             <i class="fa-brands fa-whatsapp icon" ></i>
+    //             <a href="https://wa.me/${item['No. WA UMKM/Pemilik UMKM'].replace(/^0/, '62')}" target="_blank">
+    //               ${item['No. WA UMKM/Pemilik UMKM']}
+    //             </a>
+    //           </p>
+    //         </div>
+    //       `;
+    //       container.appendChild(card);
+    //     });
+    //   });
     </script>
 
 
