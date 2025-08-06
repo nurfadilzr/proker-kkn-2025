@@ -180,4 +180,53 @@ footer {
   font-size: 13px;
   color: #fff;
   background-color: #7c7c7c;
+  height: auto;
+
+}
+
+footer img {
+  height: 60px;
+
+}
+
+.footer {
+  background-color: #666;
+  color: white;
+  padding: 20px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  width: 40px;
+  height: auto;
+}
+
+.footer-right {
+  text-align: left;
+}
+
+.footer h4 {
+  margin: 0;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.footer p {
+  margin: 4px 0;
+  font-size: 0.9em;
 }
