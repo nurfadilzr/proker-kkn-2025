@@ -174,59 +174,40 @@ main {
   margin-top: 20px;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 13px;
-  color: #fff;
-  background-color: #7c7c7c;
-  height: auto;
-
-}
-
-footer img {
-  height: 60px;
-
-}
-
 .footer {
-  background-color: #666;
-  color: white;
-  padding: 20px;
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-left {
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column; 
+  gap: 10px;
 }
 
 .footer-logo {
-  width: 40px;
+  width: 50px;
   height: auto;
 }
 
-.footer-right {
-  text-align: left;
+.footer-text {
+  font-size: 14px;
+  line-height: 1.4;
 }
 
-.footer h4 {
-  margin: 0;
-  font-size: 1.1em;
-  text-align: left;
-}
+/* Untuk layar lebar (tablet/desktop) */
+@media (min-width: 600px) {
+  .footer-content {
+    flex-direction: row;
+    gap: 20px;
+    text-align: left;
+  }
 
-.footer p {
-  margin: 4px 0;
-  font-size: 0.9em;
+  .footer-text {
+    text-align: left;
+  }
 }
