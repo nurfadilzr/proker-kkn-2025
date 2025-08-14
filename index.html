@@ -50,6 +50,17 @@
 
         values.forEach(row => {
           const [nama, alamat, maps, , wa, foto] = row;
+
+          let cleanNumber = wa.trim();
+          if (!cleanNumber.startsWith('+')) {
+            cleanNumber = cleanNumber.replace(/\D/g, ''); // buang non-angka
+            if (cleanNumber.startsWith('0')) {
+              cleanNumber = '+62' + cleanNumber.substring(1);
+            } else {
+              cleanNumber = '+62' + cleanNumber;
+            }
+          }
+
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
@@ -63,7 +74,7 @@
                 <button class="link-btn maps" onclick="window.open('${maps}', '_blank')">
                   <i class="fa-solid fa-location-dot"></i> Maps
                 </button>
-                <button class="link-btn kontak" onclick="window.open('https://wa.me/${wa.replace(/\D/g, '')}', '_blank')">
+                <button class="link-btn kontak" onclick="window.open('https://wa.me/${cleanNumber.replace(/\D/g, '')}', '_blank')">
                   <i class="fa-brands fa-whatsapp"></i> Kontak
                 </button>
               </div>
